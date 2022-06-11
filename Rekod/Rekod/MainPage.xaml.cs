@@ -14,5 +14,10 @@ namespace Rekod
         {
             InitializeComponent();
         }
+
+        public void OnDeckCreate(object sender, EventArgs e)
+        {
+            deckStack.Children.Add(new Button { Text = "Deck" });
+        }
     }
 }
