@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Rekod.ViewModel"
+             xmlns:model="clr-namespace:Rekod.Model"
+             x:DataType="viewmodel:DeckManagementViewModel"
+             x:Class="Rekod.Views.DeckManagementPage"
+             Title="Study Deck">
+
+    <Grid ColumnDefinitions=".40*, .60*">
+
+        <RefreshView Grid.Column="0"
+                     Command="{Binding RefreshCommand}"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     VerticalOptions="Fill">
+            
+            <CollectionView ItemsSource="{Binding CardCollection}"
+                            SelectionMode="None"
+                            BackgroundColor="#FDECEF">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type model:Card}">
+
+                        <Frame Margin="4, 4,4,0"
+                               BorderColor="#FDB0C3">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:DeckManagementViewModel}}, Path=TapCommand}"
+                                                      CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="{Binding FrontText}"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Center" />
+
+                                <Label Grid.Row="1"
+                                       Text="{Binding NextStudyTime,StringFormat='{0: dd/MM/yyyy hh:mm tt}'}"
+                                       FontSize="9"
+                                       TextColor="#553772"
+                                       HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <Grid Grid.Column="1"
+              RowDefinitions="auto, auto"
+              Margin="5"
+              HorizontalOptions="Center">
+
+            <VerticalStackLayout Grid.Column="1"
+                                 Margin="10"
+                                 Spacing="5">
+                <Label Text="Front:"
+                       FontSize="13" />
+
+                <Frame HeightRequest="80"
+                       BackgroundColor="#FFFDFD">
+                    <Label Text="{Binding FrontText}"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#553772"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center" />
+                </Frame>
+
+                <Label Text="Back:"
+                       FontSize="13" />
+
+                <Frame HeightRequest="80"
+                       BackgroundColor="#FFFDFD">
+                    <Label Text="{Binding BackText}"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#553772"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center" />
+                </Frame>
+            </VerticalStackLayout>
+
+            <HorizontalStackLayout Grid.Row="1"
+                                   Spacing="10"
+                                   Margin="10">
+                <Button Text="Study"
+                        BackgroundColor="#F5487F"
+                        FontAttributes="Bold"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:DeckManagementViewModel}}, Path=StudyDeckCommand}"
+                        CommandParameter="{Binding .}" />
+
+                <Button Text="Add"
+                        BackgroundColor="#F5487F"
+                        FontAttributes="Bold"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:DeckManagementViewModel}}, Path=AddCardCommand}"
+                        CommandParameter="{Binding .}" />
+
+                <Button Text="Delete"
+                        BackgroundColor="#F5487F"
+                        FontAttributes="Bold"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:DeckManagementViewModel}}, Path=DeleteCardCommand}" />
+            </HorizontalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

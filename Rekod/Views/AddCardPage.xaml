@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Rekod.ViewModel"
+             x:DataType="viewmodel:AddCardViewModel"
+             x:Class="Rekod.Views.AddCardPage"
+             Title="Add Card Page">
+
+    <VerticalStackLayout 
+                         Margin="20"
+                         Spacing="20">
+
+        <Entry Placeholder="Front"
+               TextColor="#553772"
+               FontSize="16"
+               Text="{Binding FrontText}"/>
+
+        <Entry Placeholder="Back"
+               TextColor="#553772"
+               FontSize="16"
+               Text="{Binding BackText}" />
+
+        <Button Text="Add"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:AddCardViewModel}}, Path=AddCommand}"
+                CommandParameter="{Binding .}"
+                BackgroundColor="#F5487F"
+                FontAttributes="Bold"
+                WidthRequest="100"/>
+
+    </VerticalStackLayout>
+</ContentPage>
