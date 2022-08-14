@@ -6,19 +6,18 @@
              x:DataType="viewmodel:StudyViewModel"
              x:Class="Rekod.Views.StudyPage"
              Title="Study Page">
-    
+
     <ContentPage.Resources>
         <services:InverseBoolConverter x:Key="InverseBoolConverter" />
     </ContentPage.Resources>
 
-    <Grid >
-        <Button Text="Tap On The Screen To Study." 
-                FontAttributes="Bold"
+    <Grid>
+        <Button Text="Tap On The Screen To Study."
                 FontSize="Medium"
                 CornerRadius="0"
                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StudyViewModel}}, Path=ReadyCommand}"
-                IsVisible="{Binding IsReady, Converter={StaticResource InverseBoolConverter}}"/>
-        
+                IsVisible="{Binding IsReady, Converter={StaticResource InverseBoolConverter}}" />
+
         <Grid RowDefinitions="auto, auto, auto"
               RowSpacing="5"
               Margin="50, 30"
@@ -29,7 +28,7 @@
                        VerticalOptions="Center"
                        HorizontalTextAlignment="Center"
                        TextColor="#553772"
-                       FontSize="16"/>
+                       FontSize="16" />
             </Frame>
 
             <HorizontalStackLayout Grid.Row="2"
@@ -39,16 +38,13 @@
                                    Margin="20">
                 <Button Text="Forgot"
                         WidthRequest="120"
-                        FontAttributes="Bold"
                         BackgroundColor="#C7417B"
                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StudyViewModel}}, Path=ForgotCommand}" />
 
                 <Button Text="Remember"
                         BackgroundColor="#00C49A"
-                        FontAttributes="Bold"
                         WidthRequest="120"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StudyViewModel}}, Path=RememberCommand}"/>
-                
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StudyViewModel}}, Path=RememberCommand}" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout Grid.Row="2"
@@ -57,7 +53,6 @@
                                    IsVisible="{Binding IsReaveled, Converter={StaticResource InverseBoolConverter}}">
                 <Button Text="Reveal Card"
                         WidthRequest="100"
-                        FontAttributes="Bold"
                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StudyViewModel}}, Path=RevealCardCommand}" />
             </HorizontalStackLayout>
         </Grid>

@@ -33,7 +33,7 @@ namespace Rekod.ViewModel
         {
             if (!IsReaveled && currentCard != null)
             {
-                CardText = currentCard.FrontText;
+                CardText = currentCard.BackText;
                 IsReaveled = true;
             }
             else
@@ -72,7 +72,7 @@ namespace Rekod.ViewModel
 
             if (currentCard != null && !currentCard.DoneForToday)
             {
-                CardText = currentCard.BackText;
+                CardText = currentCard.FrontText;
                 IsReaveled = false;
             }
             else

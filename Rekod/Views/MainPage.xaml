@@ -27,11 +27,11 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type model:Deck}">
-                
+
                     <SwipeView>
 
                         <SwipeView.RightItems>
-                            <SwipeItems >
+                            <SwipeItems>
                                 <SwipeItem Text="Delete"
                                            BackgroundColor="#f5487f"
                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=DeleteDeckCommand}"
@@ -49,23 +49,19 @@
 
                                 <Label Text="{Binding DeckName}"
                                        FontSize="14"
-                                       TextColor="#ff006e"/>
+                                       TextColor="#ff006e" />
                             </Frame>
                         </Grid>
-
                     </SwipeView>
-
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
         <Button Grid.Row="2"
                 Text="Create Deck"
-                FontAttributes="Bold"
                 Margin="0, 20"
                 WidthRequest="150"
                 HeightRequest="50"
-                BackgroundColor="#f5487f"
                 Command="{Binding AddDeckCommand}" />
     </Grid>
 </ContentPage>
